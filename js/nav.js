@@ -1,22 +1,9 @@
-function responsiveNav() {
-  var i = 0;
-  if (i == 0) {
-    i = 1;
-    var elem = document.getElementById("myBar");
-    var width = 1;
-    var id = setInterval(frame, 10);
-    function frame() {
-      if (width >= 100) {
-        clearInterval(id);
-        i = 0;
-      } else {
-        width++;
-        elem.style.width = width + "%";
-      }
-    }
-  }
-}
-
-
-
 window.onscroll = function() {responsiveNav()};
+
+function responsiveNav() {
+   const distanceFromTop = document.body.scrollTop || document.documentElement.scrollTop;
+   const pageHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+   const progressBarWidth = (distanceFromTop / pageHeight) * 100;
+   document.getElementById('progressBar').style.width = progressBarWidth + '%';
+ }
+
